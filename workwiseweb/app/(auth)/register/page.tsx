@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import WorkWiseLogo from '@/public/logo_work_wise.webp'
 
 export default function RegisterPage() {
   const [name, setName] = useState('')
@@ -30,7 +31,7 @@ export default function RegisterPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-4">
-            <Image src="/placeholder.svg" alt="WorkWise Logo" width={60} height={60} />
+            <Image src={WorkWiseLogo} alt="WorkWise Logo" width={60} height={60} />
           </div>
           <CardTitle className="text-2xl text-center font-bold">Crear una Cuenta en WorkWise</CardTitle>
           <CardDescription className="text-center">

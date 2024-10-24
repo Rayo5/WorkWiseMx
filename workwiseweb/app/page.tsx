@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Menu, X, ChevronRight, Users, BarChart, Shield } from 'lucide-react'
+import WorkWiseLogo from '@/public/logo_work_wise.webp'
+import FotoTrabajoEnEqipoPaginaPrincipal from '@/public/remplazar_tienecopyright.jpg'
 
 export default function EnterprisePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -16,7 +18,7 @@ export default function EnterprisePage() {
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <Image src="/placeholder.svg" alt="WorkWise Logo" width={40} height={40} />
+                <Image src={WorkWiseLogo} alt="WorkWise Logo" width={40} height={40} />
                 <span className="ml-2 text-xl font-bold text-green-600">WorkWise</span>
               </div>
             </div>
@@ -107,7 +109,7 @@ export default function EnterprisePage() {
               <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
                 <Image
                   className="w-full rounded-lg"
-                  src="/placeholder.svg"
+                  src={FotoTrabajoEnEqipoPaginaPrincipal}
                   alt="Ilustración Empresarial"
                   width={600}
                   height={400}
@@ -207,7 +209,7 @@ export default function EnterprisePage() {
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8 xl:col-span-1">
-              <Image src="/placeholder.svg" alt="Logo de WorkWise" width={40} height={40} />
+              {/*<Image src={WorkWiseLogo} alt="Logo de WorkWise" width={40} height={40} /> */}
               <p className="text-gray-300 text-base">
                 Haciendo que el trabajo funcione mejor para todos.
               </p>
