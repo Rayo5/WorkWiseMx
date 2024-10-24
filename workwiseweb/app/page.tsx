@@ -32,12 +32,12 @@ export default function EnterprisePage() {
               </Link>
             </div>
             <div className="hidden sm:flex sm:items-center sm:space-x-2">
-              <button className="bg-white hover:bg-gray-100 text-green-600 font-bold py-2 px-4 rounded border border-green-600">
+              <Link href="/login" className="bg-white hover:bg-gray-100 text-green-600 font-bold py-2 px-4 rounded border border-green-600">
                 Iniciar Sesión
-              </button>
-              <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              </Link>
+              <Link href="/register" className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Registrarse
-              </button>
+              </Link>
             </div>
             <div className="-mr-2 flex items-center sm:hidden">
               <button
@@ -66,12 +66,12 @@ export default function EnterprisePage() {
             </div>
             <div className="pt-4 pb-3 border-t border-gray-200">
               <div className="mt-3 space-y-1">
-                <button className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
+                <Link href="/login" className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
                   Iniciar Sesión
-                </button>
-                <button className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
+                </Link>
+                <Link href="/register" className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
                   Registrarse
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -239,8 +239,8 @@ export default function EnterprisePage() {
                     </li>
                   </ul>
                 </div>
-                <div className="mt-12 md:mt-0">
-                  <h3 className="text-sm  font-semibold text-gray-400 tracking-wider uppercase">
+                <div className="mt-12  md:mt-0">
+                  <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
                     Soporte
                   </h3>
                   <ul className="mt-4 space-y-4">
