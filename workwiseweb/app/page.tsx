@@ -188,7 +188,7 @@ export default function EnterprisePage() {
             </p>
             <div className="mt-6 space-y-6">
               <p className="text-xl text-gray-500 max-w-3xl mx-auto">
-                "Somos una plataforma que busca brindar personal realmente capacitado y adecuado a las necesidades de las PYMEs"
+              &quot;Somos una plataforma que busca brindar personal realmente capacitado y adecuado a las necesidades de las PYMEs&quot;
               </p>
               <p className="mt-4 max-w-2xl text-lg text-gray-500 lg:mx-auto">
                 WorkWise fue fundada con la misión de cerrar la brecha entre las empresas y los profesionales calificados. Nuestra plataforma aprovecha la tecnología de vanguardia para optimizar el proceso de contratación y mejorar la gestión de la fuerza laboral.
