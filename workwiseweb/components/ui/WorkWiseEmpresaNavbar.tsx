@@ -1,105 +1,136 @@
+// components/NavBar.tsx
 'use client'
 
-import { useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
-import { Building2, Search, MessageSquare, Menu, X } from 'lucide-react'
-import { cn } from "@/lib/utils"
+import { Newspaper, Briefcase, MessageSquare, User, HelpCircle, Bell, Bookmark, Search, Menu } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import React from 'react'; // Import React
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import WorkWiseLogo from '@/public/logo_work_wise.webp'
 
-// Define the types for nav items
-const navItems = [
-  { name: 'company', icon: Building2, label: 'Empresa' },
-  { name: 'search', icon: Search, label: 'Buscar' },
-  { name: 'messages', icon: MessageSquare, label: 'Mensajes' },
-];
-
-// Define the prop types for NavContent
-type NavContentProps = {
-  activeItem: string;
-  setActiveItem: React.Dispatch<React.SetStateAction<string>>;
-  isMobile?: boolean;
-  setIsMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-function NavContent({ activeItem, setActiveItem, isMobile = false, setIsMenuOpen }: NavContentProps) {
+export default function NavBar() {
   return (
-    <TooltipProvider>
-      {navItems.map((item) => (
-        <Tooltip key={item.name}>
-          <TooltipTrigger asChild>
-            <Button
-              variant="ghost"
-              size={isMobile ? "default" : "icon"}
-              className={cn(
-                isMobile ? "w-full justify-start px-2 py-6" : "w-12 h-12 mb-4",
-                activeItem === item.name
-                  ? "bg-blue-100 text-blue-700 hover:bg-blue-100 hover:text-blue-700"
-                  : "text-gray-600 hover:bg-blue-50 hover:text-blue-700"
-              )}
-              onClick={() => {
-                setActiveItem(item.name)
-                if (isMobile) setIsMenuOpen?.(false) // Optional chaining in case setIsMenuOpen is not provided
-              }}
-            >
-              <item.icon className={cn("h-5 w-5", isMobile && "mr-2")} />
-              {isMobile && <span>{item.label}</span>}
-              {!isMobile && <span className="sr-only">{item.label}</span>}
+    <header className="bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Image src={WorkWiseLogo} alt="WorkWise Logo" width={40} height={40} className="mr-3" />
+          </div>
+
+          {/* Desktop Navigation Icons */}
+          <nav className="hidden sm:flex items-center space-x-4">
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/dashboard/noticias">
+                <Newspaper className="w-5 h-5" />
+                <span className="sr-only">Noticias</span>
+              </Link>
             </Button>
-          </TooltipTrigger>
-          {!isMobile && (
-            <TooltipContent side="right" className="bg-white text-gray-800 shadow-lg">
-              <p>{item.label}</p>
-            </TooltipContent>
-          )}
-        </Tooltip>
-      ))}
-    </TooltipProvider>
-  )
-}
-
-export default function WorkWiseEmpresaNavbar() {
-  const [activeItem, setActiveItem] = useState<string>('company')
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
-
-  return (
-    <div className="flex h-screen bg-gray-50">
-      <nav className="bg-white w-16 flex flex-col items-center py-4 shadow-sm">
-        <div className="mb-6">
-          <Image src="/placeholder.svg" alt="Logo" width={40} height={40} />
-        </div>
-        <NavContent 
-          activeItem={activeItem} 
-          setActiveItem={setActiveItem} 
-        />
-      </nav>
-      <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-        <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="sm:hidden fixed top-4 left-4">
-            {isMenuOpen ? (
-              <X className="h-6 w-6 text-gray-600" />
-            ) : (
-              <Menu className="h-6 w-6 text-gray-600" />
-            )}
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left" className="w-[250px] sm:hidden p-0">
-          <nav className="flex flex-col py-4">
-            <div className="mb-6 px-4">
-              <Image src="/placeholder.svg" alt="Logo" width={40} height={40} />
-            </div>
-            <NavContent 
-              activeItem={activeItem} 
-              setActiveItem={setActiveItem} 
-              isMobile 
-              setIsMenuOpen={setIsMenuOpen} 
-            />
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/dashboard/vacantes">
+                <Briefcase className="w-5 h-5" />
+                <span className="sr-only">Vacantes</span>
+              </Link>
+            </Button>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/dashboard/guardados">
+                <Bookmark className="w-5 h-5" />
+                <span className="sr-only">Guardados</span>
+              </Link>
+            </Button>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/dashboard/mensajes">
+                <MessageSquare className="w-5 h-5" />
+                <span className="sr-only">Mensajes</span>
+              </Link>
+            </Button>
           </nav>
-        </SheetContent>
-      </Sheet>
-    </div>
+
+          {/* User Actions */}
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="icon">
+              <Bell className="h-5 w-5" />
+              <span className="sr-only">Notifications</span>
+            </Button>
+            <Button variant="ghost" size="icon" className="hidden sm:inline-flex">
+              <HelpCircle className="h-5 w-5" />
+              <span className="sr-only">Help</span>
+            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <User className="h-5 w-5" />
+                  <span className="sr-only">User menu</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end">
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">John Doe</p>
+                    <p className="text-xs leading-none text-muted-foreground">john.doe@example.com</p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Log out</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button variant="ghost" size="icon" className="sm:hidden">
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Menu</span>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Search */}
+      <div className="sm:hidden bg-white p-4 border-b border-gray-200">
+        <div className="relative">
+          <Input type="text" placeholder="Search..." className="w-full pl-10" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      <nav className="sm:hidden bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between py-3">
+            <Button variant="ghost" size="sm" asChild className="flex-1">
+              <Link href="/dashboard/noticias" className="flex flex-col items-center">
+                <Newspaper className="w-5 h-5" />
+                <span className="text-xs mt-1">Noticias</span>
+              </Link>
+            </Button>
+            <Button variant="ghost" size="sm" asChild className="flex-1">
+              <Link href="/dashboard/vacantes" className="flex flex-col items-center">
+                <Briefcase className="w-5 h-5" />
+                <span className="text-xs mt-1">Vacantes</span>
+              </Link>
+            </Button>
+            <Button variant="ghost" size="sm" asChild className="flex-1">
+              <Link href="/dashboard/guardados" className="flex flex-col items-center">
+                <Bookmark className="w-5 h-5" />
+                <span className="text-xs mt-1">Guardados</span>
+              </Link>
+            </Button>
+            <Button variant="ghost" size="sm" asChild className="flex-1">
+              <Link href="/dashboard/mensajes" className="flex flex-col items-center">
+                <MessageSquare className="w-5 h-5" />
+                <span className="text-xs mt-1">Mensajes</span>
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </nav>
+    </header>
   )
 }
