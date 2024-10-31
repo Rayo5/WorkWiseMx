@@ -1,9 +1,8 @@
-// components/NavBar.tsx
 'use client'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Newspaper, Briefcase, MessageSquare, User, HelpCircle, Bell, Bookmark, Search, Menu } from 'lucide-react'
+import { Newspaper, Briefcase, MessageSquare, User, HelpCircle, Bell, Bookmark } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -13,7 +12,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
 import WorkWiseLogo from '@/public/logo_work_wise.webp'
 
 export default function NavBar() {
@@ -56,19 +54,38 @@ export default function NavBar() {
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon">
-              <Bell className="h-5 w-5" />
-              <span className="sr-only">Notifications</span>
-            </Button>
-            <Button variant="ghost" size="icon" className="hidden sm:inline-flex">
-              <HelpCircle className="h-5 w-5" />
-              <span className="sr-only">Help</span>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Bell className="h-5 w-5" />
+                  <span className="sr-only">Notificaciones</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end">
+                <DropdownMenuLabel>Notificaciones</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  Nueva oferta de trabajo disponible
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  Mensaje nuevo de Empresa XYZ
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  Tu aplicación ha sido revisada
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button variant="ghost" size="icon" asChild className="hidden sm:inline-flex">
+              <Link href="/ayuda">
+                <HelpCircle className="h-5 w-5" />
+                <span className="sr-only">Ayuda</span>
+              </Link>
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <User className="h-5 w-5" />
-                  <span className="sr-only">User menu</span>
+                  <span className="sr-only">Menú de usuario</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56" align="end">
@@ -79,31 +96,22 @@ export default function NavBar() {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Log out</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/dashboard/t/perfil">Perfil</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/logout">Cerrar sesión</Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button variant="ghost" size="icon" className="sm:hidden">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Menu</span>
-            </Button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Search */}
-      <div className="sm:hidden bg-white p-4 border-b border-gray-200">
-        <div className="relative">
-          <Input type="text" placeholder="Search..." className="w-full pl-10" />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-        </div>
-      </div>
-
       {/* Mobile Navigation */}
-      <nav className="sm:hidden bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between py-3">
+      <nav className="sm:hidden bg-white border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
+          <div className="flex justify-between">
             <Button variant="ghost" size="sm" asChild className="flex-1">
               <Link href="/dashboard/t/noticias" className="flex flex-col items-center">
                 <Newspaper className="w-5 h-5" />

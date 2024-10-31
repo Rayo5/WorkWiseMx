@@ -1,6 +1,6 @@
 'use client'
 
-import NavBar from "@/components/ui/WorkWiseEmpresaNavbar"
+import NavBar from "@/components/ui/WorkWiseTrabajadorNavbar"
 import NewsCard from "@/components/ui/NewsCards"
 
 // Datos de ejemplo
