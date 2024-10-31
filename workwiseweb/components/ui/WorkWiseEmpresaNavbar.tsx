@@ -18,7 +18,7 @@ import WorkWiseLogo from '@/public/logo_work_wise.webp'
 
 export default function NavBar() {
   return (
-    <header className="bg-white border-b border-gray-200">
+    <header className="bg-[#fcfcfc] border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -29,25 +29,25 @@ export default function NavBar() {
           {/* Desktop Navigation Icons */}
           <nav className="hidden sm:flex items-center space-x-4">
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/dashboard/noticias">
+              <Link href="/dashboard/t/noticias">
                 <Newspaper className="w-5 h-5" />
                 <span className="sr-only">Noticias</span>
               </Link>
             </Button>
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/dashboard/vacantes">
+              <Link href="/dashboard/t/vacantes">
                 <Briefcase className="w-5 h-5" />
                 <span className="sr-only">Vacantes</span>
               </Link>
             </Button>
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/dashboard/guardados">
+              <Link href="/dashboard/t/guardados">
                 <Bookmark className="w-5 h-5" />
                 <span className="sr-only">Guardados</span>
               </Link>
             </Button>
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/dashboard/mensajes">
+              <Link href="/dashboard/t/mensajes">
                 <MessageSquare className="w-5 h-5" />
                 <span className="sr-only">Mensajes</span>
               </Link>
@@ -105,25 +105,25 @@ export default function NavBar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between py-3">
             <Button variant="ghost" size="sm" asChild className="flex-1">
-              <Link href="/dashboard/noticias" className="flex flex-col items-center">
+              <Link href="/dashboard/t/noticias" className="flex flex-col items-center">
                 <Newspaper className="w-5 h-5" />
                 <span className="text-xs mt-1">Noticias</span>
               </Link>
             </Button>
             <Button variant="ghost" size="sm" asChild className="flex-1">
-              <Link href="/dashboard/vacantes" className="flex flex-col items-center">
+              <Link href="/dashboard/t/vacantes" className="flex flex-col items-center">
                 <Briefcase className="w-5 h-5" />
                 <span className="text-xs mt-1">Vacantes</span>
               </Link>
             </Button>
             <Button variant="ghost" size="sm" asChild className="flex-1">
-              <Link href="/dashboard/guardados" className="flex flex-col items-center">
+              <Link href="/dashboard/t/guardados" className="flex flex-col items-center">
                 <Bookmark className="w-5 h-5" />
                 <span className="text-xs mt-1">Guardados</span>
               </Link>
             </Button>
             <Button variant="ghost" size="sm" asChild className="flex-1">
-              <Link href="/dashboard/mensajes" className="flex flex-col items-center">
+              <Link href="/dashboard/t/mensajes" className="flex flex-col items-center">
                 <MessageSquare className="w-5 h-5" />
                 <span className="text-xs mt-1">Mensajes</span>
               </Link>
